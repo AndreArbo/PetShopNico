@@ -1,0 +1,37 @@
+﻿@model Project_no1.Models.Users
+
+@{
+    ViewBag.Title = "LogIn";
+}
+
+<h2>LogIn</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        <table class="table-responsive">
+            <tr>
+                <td>
+                    Tipo:
+                </td>
+                <td>
+                    @Html.TextBox("Username")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Raça:
+                </td>
+                <td>
+                    @Html.TextBox("Password")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Filter" />
+                    <input type="Button" value="Remove Filter" onclick="window.location.href='@Url.Action("TryLogIn")'" />
+                </td>
+            </tr>
+        </table>
+    </p>
+}
+

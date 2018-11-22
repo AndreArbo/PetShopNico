@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Project_no1.Models.Pet>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+
+    @using (Html.BeginForm())
+    {
+    <p>
+        <table class="table-responsive">
+            <tr>
+                <td>
+                    Tipo:
+                </td>
+                <td>
+                    @Html.TextBox("SearchString_Tipo")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Raça:
+                </td>
+                <td>
+                    @Html.TextBox("SearchString_Raca")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Filter" />
+                </td>
+                <td>
+                    <input type="Button" value="Remove Filter" onclick="window.location.href='@Url.Action("index")'" />
+                </td>
+            </tr>
+        </table>
+    </p>
+    }
+
+    </p>
+
+
+@if (Model != null)
+{
+    if (Model.Count() != 0)
+    {
+    <table id="table_results" class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Raça)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Raça)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+        
+    </table>
+    }
+    else
+    {
+        <div id="noResults">
+            <label>No Results Found!</label>
+        </div>
+    }
+}
+
+    @section scripts {
+
+        <script type="text/javascript">
+
+        </script>
+    }
