@@ -1,0 +1,89 @@
+﻿@model PetShopNico.Models.Employees
+@{
+    ViewBag.Title = "Begin";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+}
+
+<h2>Welcome @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control", @Visible ="false" } })
+        <tr>
+            <th>
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            </th>
+
+            <th>
+                @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "control-label col-md-2" })
+            </th>
+
+            <th>
+                @Html.LabelFor(model => model.BeginDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            </th>
+
+            <th>
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            </th>
+
+            <th>
+                @Html.LabelFor(model => model.MobilePhone, htmlAttributes: new { @class = "control-label col-md-2" })
+            </th>
+
+            <th>
+                @Html.LabelFor(model => model.Users.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </td>
+
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Role, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
+                </div>
+            </td>
+
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.BeginDate, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.BeginDate, "", new { @class = "text-danger" })
+                </div>
+            </td>
+
+            <td>
+
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </td>
+
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MobilePhone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MobilePhone, "", new { @class = "text-danger" })
+                </div>
+            </td>
+
+            <td>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Users.UserName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.ValidationMessageFor(model => model.Users.UserName, "", new { @class = "text-danger" })
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="row">
+        <input type="submit" value="Begin" class="btn btn-default" />
+    </div>
+
+}
+
